@@ -1,0 +1,19 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 0.5fr) 1fr 0.5fr 1fr 2fr;
+  grid-template-rows: 40px 50px;
+}
+
+.table_title {
+  text-align: center;
+}
+
+.index_btn {
+  display: flex;
+  gap: 10px;
+}
+
+.update_btn {
+  display: flex;
+  gap: 10px;
+}

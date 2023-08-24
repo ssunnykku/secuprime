@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h3>고객 정보 > 수정</h3>
+    </header>
+    <div>
+      <div>
+        <span>code : </span>
+        <sapn id="guest_code"><%= data.guest_code %></sapn>
+      </div>
+      <div>
+        <span>name : </span>
+        <span> <%= data.guest_name %></span>
+      </div>
+      <div>
+        <span>birth : </span>
+        <span><%= data.guest_birth %></span>
+      </div>
+      <div>
+        <span>phone number : </span
+        ><input id="guest_hp" value="<%= data.guest_hp %>" />
+      </div>
+      <div>
+        <span>address : </span
+        ><input id="guest_addr" value="<%= data.guest_addr %>" />
+      </div>
+      <div>
+        <span>mail : </span
+        ><input id="guest_mail" value="<%= data.guest_mail %>" />
+      </div>
+      <div class="update_btn">
+        <form action="<%=data.guest_code%>" method="post">
+          <button id="confirm" type="submit">확인</button>
+        </form>
+        <form>
+          <button id="cancel" type="submit">취소</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      const guestInfo = document.querySelectorAll('input');
+      const guest_code = document.querySelector('#guest_code').textContent;
+      const editBtn = document.querySelector('#confirm');
+      const cancelBtn = document.querySelector('#cancel');
+      // 수정하기 버튼 이벤트
+      editBtn.addEventListener('click', function (event) {
+        event.preventDefault();
+
+        let formData = {};
+        guestInfo.forEach((item) => {
+          formData[item.id] = item.value;
+        });
+
+        fetch(`/${guest_code}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        })
+          .then((response) => {
+            window.location.assign('/');
+          })
+          .catch((error) => {
+            console.error('ERROR: PUT request: ', error);
+          });
+      });
+
+      cancelBtn.addEventListener('click', function (event) {
+        event.preventDefault();
+        window.location.assign('/');
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer page</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h2>고객 관리</h2>
+      <form action="/update" method="post">
+        <button type="submit">되돌리기</button>
+      </form>
+    </header>
+    <section>
+      <h3>고객 정보</h3>
+    </section>
+    <section class="container">
+      <div class="item table_title">code</div>
+      <div class="item table_title">name</div>
+      <div class="item table_title">birth</div>
+      <div class="item table_title">phone number</div>
+      <div class="item table_title">address</div>
+      <div class="item table_title">mail</div>
+      <div class="item"></div>
+      <% data.forEach(guestInfo => {%>
+      <div class="item"><%= guestInfo.guest_code %></div>
+      <div class="item"><%= guestInfo.guest_name %></div>
+      <div class="item"><%= guestInfo.guest_birth %></div>
+      <div class="item"><%= guestInfo.guest_hp %></div>
+      <div class="item"><%= guestInfo.guest_addr %></div>
+      <div class="item"><%= guestInfo.guest_mail %></div>
+      <div class="item index_btn">
+        <form action="/<%=guestInfo.guest_code%>">
+          <button type="submit">수정</button>
+        </form>
+        <form action="/<%=guestInfo.guest_code%>" method="post">
+          <button class="delete_btn" id="<%= guestInfo.guest_code %>">
+            삭제
+          </button>
+        </form>
+      </div>
+
+      <% });%>
+      <div class="item"></div>
+      <div class="item">9</div>
+      <div class="item">10</div>
+      <div class="item">11</div>
+      <div class="item">12</div>
+      <div class="item">13</div>
+      <div class="item">14</div>
+    </section>
+    <script>
+      const deleteBtn = document.querySelectorAll('.delete_btn');
+
+      deleteBtn.forEach((btn) => {
+        btn.addEventListener('click', function (event) {
+          event.preventDefault();
+          const guestCode = this.getAttribute('id');
+
+          fetch(`/${guestCode}`, {
+            method: 'DELETE',
+          })
+            .then((response) => {
+              response.json();
+              window.location.reload();
+            })
+            .catch((error) => {
+              console.error('ERROR: DELETE request: ', error);
+            });
+        });
+      });
+    </script>
+  </body>
+</html>
