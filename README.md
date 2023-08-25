@@ -12,7 +12,7 @@
    - http://sunhee.duckdns.org:3000
 2. cust, cust_detail 특정 데이터 조회
    - http://sunhee.duckdns.org:3000/:guest_code
-3. "STEP_02 "에서 제시된 데이터 파싱 후 파싱한 Data DB에 저장
+3. "STEP_02 "에서 제시된 데이터 파싱 후 파싱한 Data DB에 저장 ("처음으로" 버튼 클릭 시 DB 업데이트)
    - http://sunhee.duckdns.org:3000/update
 4. 특정 데이터 수정
    - http://sunhee.duckdns.org:3000/:guest_code

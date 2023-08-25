@@ -10,40 +10,44 @@
     <header>
       <h2>고객 관리</h2>
       <form action="/update" method="post">
-        <button type="submit">되돌리기</button>
+        <button class="updateDb_btn" type="submit">처음으로</button>
       </form>
     </header>
-    <section>
-      <h3>고객 정보</h3>
-    </section>
-    <section class="container">
-      <div class="item table_title">code</div>
-      <div class="item table_title">name</div>
-      <div class="item table_title">birth</div>
-      <div class="item table_title">phone number</div>
-      <div class="item table_title">address</div>
-      <div class="item table_title">mail</div>
-      <div class="item"></div>
-      <% data.forEach(guestInfo => {%>
-      <div class="item"><%= guestInfo.guest_code %></div>
-      <div class="item"><%= guestInfo.guest_name %></div>
-      <div class="item"><%= guestInfo.guest_birth %></div>
-      <div class="item"><%= guestInfo.guest_hp %></div>
-      <div class="item"><%= guestInfo.guest_addr %></div>
-      <div class="item"><%= guestInfo.guest_mail %></div>
-      <div class="item index_btn">
-        <form action="/<%=guestInfo.guest_code%>">
-          <button type="submit">수정</button>
-        </form>
-        <form action="/<%=guestInfo.guest_code%>" method="post">
-          <button class="delete_btn" id="<%= guestInfo.guest_code %>">
-            삭제
-          </button>
-        </form>
-      </div>
+    <div class="index_content">
+      <section>
+        <h3>고객 정보</h3>
+      </section>
+      <section class="container">
+        <div class="item table_title first_col">code</div>
+        <div class="item table_title">name</div>
+        <div class="item table_title">birth</div>
+        <div class="item table_title">phone number</div>
+        <div class="item table_title">address</div>
+        <div class="item table_title">mail</div>
+        <div class="item table_title"></div>
+        <% data.forEach(guestInfo => {%>
+        <div class="item table_content first_col">
+          <%= guestInfo.guest_code %>
+        </div>
+        <div class="item table_content"><%= guestInfo.guest_name %></div>
+        <div class="item table_content"><%= guestInfo.guest_birth %></div>
+        <div class="item table_content"><%= guestInfo.guest_hp %></div>
+        <div class="item table_content"><%= guestInfo.guest_addr %></div>
+        <div class="item table_content"><%= guestInfo.guest_mail %></div>
+        <div class="item index_btn table_content">
+          <form action="/<%=guestInfo.guest_code%>">
+            <button class="edit_btn" type="submit">수정</button>
+          </form>
+          <form action="/<%=guestInfo.guest_code%>" method="post">
+            <button class="delete_btn" id="<%= guestInfo.guest_code %>">
+              삭제
+            </button>
+          </form>
+        </div>
 
-      <% });%>
-    </section>
+        <% });%>
+      </section>
+    </div>
     <script>
       const deleteBtn = document.querySelectorAll('.delete_btn');
 

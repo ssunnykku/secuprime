@@ -8,41 +8,46 @@
   </head>
   <body>
     <header>
-      <h3>고객 정보 > 수정</h3>
+      <h2>고객 관리</h2>
     </header>
-    <div>
-      <div>
-        <span>code : </span>
-        <span id="guest_code"><%= data ? data.guest_code : '' %></span>
-      </div>
-      <div>
-        <span>name : </span>
-        <span> <%= data ? data.guest_name : ''%></span>
-      </div>
-      <div>
-        <span>birth : </span>
-        <span><%= data ? data.guest_birth : ''%></span>
-      </div>
-      <div>
-        <span>phone number : </span>
-        <input id="guest_hp" value="<%= data ? data.guest_hp : '' %>" />
-      </div>
-      <div>
-        <span>address : </span>
-        <input id="guest_addr" value="<%= data ? data.guest_addr : '' %>" />
-      </div>
-      <div>
-        <span>mail : </span>
-        <input id="guest_mail" value="<%= data ? data.guest_mail : '' %>" />
-      </div>
-      <div class="update_btn">
+    <div class="update_content">
+      <section>
+        <h3>고객 정보 > 수정</h3>
+      </section>
+      <section>
+        <div>
+          <span>code : </span>
+          <span id="guest_code"><%= data ? data.guest_code : '' %></span>
+        </div>
+        <div>
+          <span>name : </span>
+          <span> <%= data ? data.guest_name : ''%></span>
+        </div>
+        <div>
+          <span>birth : </span>
+          <span><%= data ? data.guest_birth : ''%></span>
+        </div>
+        <div>
+          <span>phone number : </span>
+          <input id="guest_hp" value="<%= data ? data.guest_hp : '' %>" />
+        </div>
+        <div>
+          <span>address : </span>
+          <input id="guest_addr" value="<%= data ? data.guest_addr : '' %>" />
+        </div>
+        <div>
+          <span>mail : </span>
+          <input id="guest_mail" value="<%= data ? data.guest_mail : '' %>" />
+        </div>
+      </section>
+      <section class="update_btn">
         <form action="<%=data ? data.guest_code : ''%>" method="post">
-          <button id="confirm" type="submit">확인</button>
+          <button class="confirm_btn" id="confirm" type="submit">확인</button>
         </form>
         <form>
-          <button id="cancel" type="submit">취소</button>
+          <button class="cancel_btn" id="cancel" type="submit">취소</button>
         </form>
-      </div>
+      </section>
     </div>
     <script>
       const guestInfo = document.querySelectorAll('input');
