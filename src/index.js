@@ -8,6 +8,13 @@ import custRouter from './routes/cust.route.js';
 
 const app = express();
 
+//** logging middleware */
+app.use((req, res, next) => {
+  console.log(req.rawHeaders[1]);
+  console.log('this is logging middleware');
+  next();
+});
+
 // view engine setup
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -21,6 +28,13 @@ app.use(express.urlencoded({ extended: true }));
 
 //routes
 app.use(custRouter);
+
+//* 404 middleware
+app.use((req, res, next) => {
+  console.log('this is error middleware');
+  res.send({ error: '404 not found error' });
+  next();
+});
 
 const port = process.env.SEVER_PORT;
 app.listen(port, console.log('OK'));
