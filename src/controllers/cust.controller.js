@@ -26,7 +26,7 @@ class custController {
 
       const data = updatedData[0];
       // res.send(data);
-      console.log(data);
+
       return res.render('update', { data });
       // return res.status(200).send(data);
     } catch (error) {
