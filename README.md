@@ -4,6 +4,8 @@
 
 #### Express.js, MySQL, EJS, AWS EC2, PM2, NGINX
 
+ <br/>
+
 ## 애플리케이션의 실행 방법
 
 - 테스트 URL : http://sunhee.duckdns.org/
@@ -18,10 +20,15 @@
    - http://sunhee.duckdns.org:3000/:guest_code
 5. 특정 데이터 삭제
    - http://sunhee.duckdns.org:3000/:guest_code
+  
+<br/>
 
 ## 데이터베이스 테이블 구조
+ <br/>
 
 ![Alt text](image.png)
+
+<br/>
 
 ## 구현 내용
 
