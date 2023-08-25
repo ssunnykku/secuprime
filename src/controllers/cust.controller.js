@@ -3,7 +3,7 @@ import Joi from 'joi';
 
 //validation
 const guestValidator = Joi.object({
-  guest_hp: Joi.string().trim().required(),
+  guest_hp: Joi.string().trim().required().max(11),
   guest_addr: Joi.string().trim().required(),
   guest_mail: Joi.string().trim().email().required(),
 });
@@ -47,7 +47,8 @@ class custController {
   static async editInfo(req, res, next) {
     try {
       const guest_code = req.params.guest_code;
-      const { guest_hp, guest_addr, guest_mail } = await req.body;
+      const { guest_hp, guest_addr, guest_mail } =
+        await guestValidator.validateAsync(req.body);
       const data = await custService.updateInfo({
         guest_code,
         guest_hp,

@@ -31,10 +31,10 @@ class custService {
 
   //* 3. "STEP_02 "에서 제시된 데이터 파싱 후 파싱한 Data DB에 저장
   static async updateData() {
-    let conn;
+    const conn = await pool.getConnection();
     try {
       // 트랜잭션 적용
-      conn = await pool.getConnection();
+
       await conn.beginTransaction();
 
       // date 파싱
@@ -71,7 +71,7 @@ class custService {
       }
 
       await conn.commit(); // 트랜잭션 커밋
-      return 'DB 업데이트 완료';
+      return;
     } catch (error) {
       if (conn) await conn.rollback();
       console.error(error);
@@ -95,17 +95,25 @@ class custService {
 
   //* 5. 특정 데이터 삭제
   static async deleteCustInfo({ guest_code }) {
+    const conn = await pool.getConnection();
     try {
+      await conn.beginTransaction();
+
       const custDetailQuery = 'DELETE FROM cust_detail WHERE guest_code = ?';
       const custQuery = 'DELETE FROM cust WHERE guest_code = ?';
 
-      await pool.query(custDetailQuery, [guest_code]);
-      await pool.query(custQuery, [guest_code]);
+      await conn.query(custDetailQuery, [guest_code]);
+      await conn.query(custQuery, [guest_code]);
+
+      await conn.commit();
 
       return { success: true, message: 'Data deleted successfully.' };
     } catch (error) {
+      await conn.rollback();
       console.error(error);
-      res.status(500).json({ error: 'Server Error' });
+      throw new Error('Server Error');
+    } finally {
+      conn.release();
     }
   }
 }
