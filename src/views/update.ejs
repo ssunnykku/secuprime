@@ -25,18 +25,18 @@
       </div>
       <div>
         <span>phone number : </span>
-        <input id="guest_hp" value="<%= data.guest_hp %>" />
+        <input id="guest_hp" value="<%= data ? data.guest_hp : '' %>" />
       </div>
       <div>
         <span>address : </span>
-        <input id="guest_addr" value="<%= data.guest_addr %>" />
+        <input id="guest_addr" value="<%= data ? data.guest_addr : '' %>" />
       </div>
       <div>
         <span>mail : </span>
-        <input id="guest_mail" value="<%= data.guest_mail %>" />
+        <input id="guest_mail" value="<%= data ? data.guest_mail : '' %>" />
       </div>
       <div class="update_btn">
-        <form action="<%=data.guest_code%>" method="post">
+        <form action="<%=data ? data.guest_code : ''%>" method="post">
           <button id="confirm" type="submit">확인</button>
         </form>
         <form>
