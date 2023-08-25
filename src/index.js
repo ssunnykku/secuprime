@@ -3,8 +3,6 @@ import 'dotenv/config';
 import path, { dirname } from 'path'; // Added dirname import here
 import { fileURLToPath } from 'url';
 
-import dbconfig from './config/db.config.js';
-
 //routes
 import custRouter from './routes/cust.route.js';
 

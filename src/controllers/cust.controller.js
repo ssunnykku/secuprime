@@ -9,6 +9,7 @@ const guestValidator = Joi.object({
 });
 
 class custController {
+  //* 1. cust, cust_detail 전체 목록 조회
   static async getData(req, res, next) {
     try {
       const data = await custService.getList();
@@ -19,21 +20,20 @@ class custController {
     }
   }
 
-  static async edit(req, res, next) {
+  //* 2. cust, cust_detail 특정 데이터 조회
+  static async getCustomerDetail(req, res, next) {
     try {
       const guest_code = req.params.guest_code;
-      const updatedData = await custService.editData({ guest_code });
+      const updatedData = await custService.findGuestCode({ guest_code });
 
       const data = updatedData[0];
-      // res.send(data);
 
       return res.render('update', { data });
-      // return res.status(200).send(data);
     } catch (error) {
       console.error(error);
     }
   }
-
+  //* 3. "STEP_02 "에서 제시된 데이터 파싱 후 파싱한 Data DB에 저장
   static async updateDb(req, res, next) {
     try {
       const updatedDb = await custService.updateData();
@@ -43,6 +43,7 @@ class custController {
     }
   }
 
+  //* 4. 특정 데이터 수정
   static async editInfo(req, res, next) {
     try {
       const guest_code = req.params.guest_code;
@@ -58,7 +59,7 @@ class custController {
       console.error(error);
     }
   }
-
+  //* 5. 특정 데이터 삭제
   static async deleteData(req, res, next) {
     try {
       const guest_code = req.params.guest_code;

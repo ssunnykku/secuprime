@@ -1,4 +1,4 @@
-import mysql from 'mysql2';
+import mysql from 'mysql2/promise';
 
 const dbConfig = {
   host: process.env.DB_HOST,
@@ -10,17 +10,6 @@ const dbConfig = {
 
 const connection = mysql.createConnection(dbConfig);
 
-// 접속
-// connection.connect((error) => {
-//   if (error) throw error;
-//   console.log('Successfully connected to the database.');
-// });
+const pool = mysql.createPool(dbConfig);
 
-// connection.query('SELECT * from cust', (error, rows, fields) => {
-//   if (error) throw error;
-//   console.log('User info is: ', rows);
-// });
-
-// connection.end();
-
-export default connection;
+export default pool;
