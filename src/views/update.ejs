@@ -13,27 +13,27 @@
     <div>
       <div>
         <span>code : </span>
-        <span id="guest_code"><%= data ? guest_code %></span>
+        <span id="guest_code"><%= data ? data.guest_code : '' %></span>
       </div>
       <div>
         <span>name : </span>
-        <span> <%= data.guest_name %></span>
+        <span> <%= data ? data.guest_name : ''%></span>
       </div>
       <div>
         <span>birth : </span>
-        <span><%= data.guest_birth %></span>
+        <span><%= data ? data.guest_birth : ''%></span>
       </div>
       <div>
-        <span>phone number : </span
-        ><input id="guest_hp" value="<%= data.guest_hp %>" />
+        <span>phone number : </span>
+        <input id="guest_hp" value="<%= data.guest_hp %>" />
       </div>
       <div>
-        <span>address : </span
-        ><input id="guest_addr" value="<%= data.guest_addr %>" />
+        <span>address : </span>
+        <input id="guest_addr" value="<%= data.guest_addr %>" />
       </div>
       <div>
-        <span>mail : </span
-        ><input id="guest_mail" value="<%= data.guest_mail %>" />
+        <span>mail : </span>
+        <input id="guest_mail" value="<%= data.guest_mail %>" />
       </div>
       <div class="update_btn">
         <form action="<%=data.guest_code%>" method="post">
