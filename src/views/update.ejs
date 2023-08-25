@@ -15,38 +15,38 @@
         <h3>고객 정보 > 수정</h3>
       </section>
       <section>
-        <div>
+        <div class="update_data">
           <span>code : </span>
           <span id="guest_code"><%= data ? data.guest_code : '' %></span>
         </div>
-        <div>
+        <div class="update_data">
           <span>name : </span>
           <span> <%= data ? data.guest_name : ''%></span>
         </div>
-        <div>
+        <div class="update_data">
           <span>birth : </span>
           <span><%= data ? data.guest_birth : ''%></span>
         </div>
-        <div>
+        <div class="update_data">
           <span>phone number : </span>
           <input id="guest_hp" value="<%= data ? data.guest_hp : '' %>" />
         </div>
-        <div>
+        <div class="update_data">
           <span>address : </span>
           <input id="guest_addr" value="<%= data ? data.guest_addr : '' %>" />
         </div>
-        <div>
+        <div class="update_data">
           <span>mail : </span>
           <input id="guest_mail" value="<%= data ? data.guest_mail : '' %>" />
         </div>
-      </section>
-      <section class="update_btn">
-        <form action="<%=data ? data.guest_code : ''%>" method="post">
-          <button class="confirm_btn" id="confirm" type="submit">확인</button>
-        </form>
-        <form>
-          <button class="cancel_btn" id="cancel" type="submit">취소</button>
-        </form>
+        <div class="update_btn">
+          <form action="<%=data ? data.guest_code : ''%>" method="post">
+            <button class="confirm_btn" id="confirm" type="submit">확인</button>
+          </form>
+          <form>
+            <button class="cancel_btn" id="cancel" type="submit">취소</button>
+          </form>
+        </div>
       </section>
     </div>
     <script>
